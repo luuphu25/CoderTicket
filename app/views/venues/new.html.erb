@@ -1,0 +1,17 @@
+<div class="col-lg-6" style="margin-top: 10%; margin-left: 10%">
+  <h1>Create Venues</h1>
+  <%= form_for @venue do |f| %>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class:"form-control" %>    
+    <div class="form-group">
+      <%= f.label :address %>
+      <%= f.text_field :full_address, class:"form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :regions %>
+      <%= f.select :region_id, Region.all.collect {|p| [p.name, p.id]}, class:'form-control'%>    
+    </div>
+    <%= f.submit "Create", class:"btn btn-primary" %>
+    <% end %>
+  </div>
