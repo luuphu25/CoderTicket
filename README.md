@@ -33,7 +33,7 @@ The person with best test coverage will win a small present from the instructor 
 * [x] Each event can have multiple types of tickets, each with a different `price` and `max_quantity`.
 * [ ] Users can buy tickets to an event, choose the types of tickets, and the quantity of tickets.
 * [ ] Users cannot buy more tickets than the quantity available.
-* [ ] Users can only buy up to 10 of a ticket type at a time. Show a nice flash message.
+* [x] Users can only buy up to 10 of a ticket type at a time. Show a nice flash message.
 
 #### Users
 
@@ -45,7 +45,7 @@ The person with best test coverage will win a small present from the instructor 
     * Suggestions:
         * See [Add More RESTful Actions](http://guides.rubyonrails.org/routing.html#adding-more-restful-actions) to add a `publish` POST action (member type)
         * Write a test to make sure only an event creator can publish an event
-* [ ] Users can create ticket types for that event.
+* [x] Users can create ticket types for that event.
     * **HINT**: make sure you understand what a ticket tpe is. Ask if not clear.
 * [x] Users can create venues.
 * [ ] An event must have at least one `ticket_type` defined before it can be published.

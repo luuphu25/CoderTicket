@@ -1,0 +1,30 @@
+<%= form_for (@event) do |f| %>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name , class:"form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :image %>
+    <%= f.text_field :hero_image_url, class:"form-control" %>
+  </div>
+  <fieldset class="field form-group">
+    <%= f.label :Decription %>
+    <%= f.text_area :extended_html_description, size:"10x10", class:"form-control content-field-body" %>
+  </fieldset>
+  <div class="form-group">
+    <%= f.label :Venue %>
+    <%= f.select :venue_id, Venue.all.collect {|p| [p.name, p.id]}, class:"form-control" %>
+  </div>
+  <div class="form-group row">
+    <%= f.label :Start %>
+    <%= f.datetime_select :starts_at, :ampm => true, :minute_step => 15 %>
+    <br>
+    <%= f.label :End %>
+    <%= f.datetime_select :ends_at, :ampm => true, :minute_step => 15 %>
+  </div>
+  <div class="form-group">
+    <%= f.label :Category %>
+    <%= f.select :category_id, Category.all.collect {|e|  [e.name, e.id]}, class:"form-control" %>
+  </div>
+  <%= f.submit "Create", class:"btn btn-success" %>
+<% end %>

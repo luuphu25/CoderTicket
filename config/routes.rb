@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
 
 
+
   resources :users
   resources :venues, only: [:new, :create]
   resources :sessions, only: [:new, :create]
