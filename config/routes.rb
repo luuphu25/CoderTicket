@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   resources :users
   resources :sessions, only: [:new, :create]
-
+  get 'upcoming' => 'events#index'
   get 'sign_in' => 'sessions#new'
   delete 'log_out' => 'sessions#destroy' 
 

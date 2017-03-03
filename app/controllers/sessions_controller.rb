@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     if @user
       if @user.authenticate(params[:password])
         flash[:success] = "Welcome #{@user.name} !"
-        session[:user_id] = @user.user_id
+        session[:user_id] = @user.id
         redirect_to root_path
       else
         flash[:error] = "Wrong password!"
