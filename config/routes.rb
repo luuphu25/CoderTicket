@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
+
   resources :users
   resources :sessions, only: [:new, :create]
 
   get 'sign_in' => 'sessions#new'
   delete 'log_out' => 'sessions#destroy' 
+
 
   root 'events#index'
 
