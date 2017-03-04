@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :users
   resources :venues, only: [:new, :create]
   resources :sessions, only: [:new, :create]
-  resources :orders, only: [:new, :create]
+  resources :orders, only: [:new, :create, :index]
   get 'upcoming' => 'events#index'
   get 'sign_in' => 'sessions#new'
   delete 'log_out' => 'sessions#destroy'
@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   root 'events#index'
 
   resources :events do
+    member do
+      put :publish
+    end
     resources :tickets
   end
   # The priority is based upon order of creation: first created -> highest priority.

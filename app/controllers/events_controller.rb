@@ -30,6 +30,19 @@ class EventsController < ApplicationController
     end
   end
 
+  def publish
+    if have_enough_ticket_types?
+      self.update(published_at:datetime)
+    else
+      flash[:error] = "Must have at least 1 type ticket"
+      redirect_to root_path
+    end
+  end
+
+  def have_enough_ticket_type?
+    return not(TicketType.where(event_id: self.id).empty)
+  end
+
   private
   def event_params
     params.require(:event).permit(:name, :hero_image_url, :extended_html_description, :starts_at, :ends_at, :venue_id,:category_id)

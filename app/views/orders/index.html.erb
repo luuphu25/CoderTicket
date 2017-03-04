@@ -1,0 +1,5 @@
+<% @orders.each do |order| %>
+<%= order.ticket_type.name %>
+<%= order.ticket_type.price %>
+<%= order.quantity %>
+<% end %>

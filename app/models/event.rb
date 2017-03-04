@@ -17,4 +17,14 @@ class Event < ActiveRecord::Base
   def self.published
     where.not(published_at: nil)
   end
+
+  def publish
+    if have_enough_ticket_type?
+      self.update(published_at:Time.now)   
+    end
+  end
+
+  def have_enough_ticket_type?
+    return not(TicketType.where(event_id: self.id).empty?)
+  end
 end

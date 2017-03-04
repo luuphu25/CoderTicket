@@ -1,5 +1,9 @@
 class OrdersController < ApplicationController
 
+  def index
+    @ticket_types = TicketType.all
+    @orders = Order.where(user_id: current_user.id)
+  end
   def new
     order = Order.new
   end
