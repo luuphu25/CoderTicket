@@ -14,6 +14,9 @@
      <li class="nav-item">
       <%= link_to "Your Order", orders_path, class:"nav-link" %>
      </li>
+     <li class="nav-item">
+     <%= link_to "Your Events", mine_event_path(id: current_user.id), class:"nav-link" %>
+     </li>
     <% else %>
     <li class="nav-item">
       <%= link_to "Sign in", new_session_path, class:"nav-link" %>
