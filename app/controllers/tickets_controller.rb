@@ -8,7 +8,7 @@ class TicketsController < ApplicationController
   def index
     @event = Event.find(params[:event_id])
     @tickets = TicketType.where(event_id: params[:event_id])
-    @orders = []    
+    @orders = []
        
     
   end

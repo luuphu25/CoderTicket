@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  before_action :authorize
 
   def index
     @ticket_types = TicketType.all
@@ -8,7 +9,8 @@ class OrdersController < ApplicationController
     order = Order.new
   end
 
-  def create    
+  def create
+
     @orders = params[:orders]   
     @orders.each do |ticket, q|   
       @order = Order.new(ticket_type_id: ticket, quantity: q)
