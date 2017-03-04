@@ -1,6 +1,5 @@
-class OrdersController < ApplicationController
+class OrdersController < ApplicationController  
   before_action :authorize
-
   def index
     @ticket_types = TicketType.all
     @orders = Order.where(user_id: current_user.id)
@@ -10,7 +9,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-
+    
     @orders = params[:orders]   
     @orders.each do |ticket, q|   
       @order = Order.new(ticket_type_id: ticket, quantity: q)

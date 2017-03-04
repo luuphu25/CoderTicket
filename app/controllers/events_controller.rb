@@ -1,14 +1,15 @@
 class EventsController < ApplicationController
 
   def index
-    @events = Event.all
+    if current_user
+      @events = Event.where.not(published_at: nil).or(Event.where(user_id: current_user.id))
+    else 
+       @events = Event.where.not(published_at: nil)
+    end 
      if params[:search]
-      @events = Event.search(params[:search]).order("created_at DESC")
-      if @events.empty?
-        @events = Event.all
-      end
+       @events = @events.search(params[:search]).order("created_at DESC")      
      else
-      @events = Event.order("created_at DESC") 
+        @events = @events.order("created_at DESC") 
      end
   end
 

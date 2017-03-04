@@ -17,17 +17,15 @@
       <div class="time-details"> 
         <%= @event.starts_at.strftime('%A, %d %b %Y %l:%M %p') %> 
       </div>
-
-
     </div>
   </div>
   <div class="row">
     <div class="col-md-11 col-md-offset-1">  
-      <table class="table">
+       <%= form_tag orders_path do %> 
+        <table class="table">
         <th> Ticket Type </th>
         <th> Unit Price </th>
-        <th> Quantity </th>
-        <%= form_tag orders_path do %> 
+        <th> Quantity </th>       
         <% @tickets.each do |type| %>
         <tr>
           <td> <%= type.name %> </td>
@@ -36,12 +34,11 @@
         </tr>
         <% end %> 
       </table>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-2 col-md-offset-5">
+      <div class="col-md-2 col-md-offset-5">
       <%= submit_tag "Buy", class:"btn btn-success btn-lg btn-block" %>
     </div>
     <% end %>
-  <div>
+    </div>
+  </div>
+ 
 </div>  
