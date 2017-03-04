@@ -7,12 +7,22 @@
   </div>
 </div>
 <div class="container-fluid events-list">
-    <% @events.in_groups_of(3) do |g| %>
-      <div class="row">
-        <% g.compact.each do |e| %>
-            <%= render partial: 'card', locals: {event: e} %>
-        <% end %>
-      </div>  
+  <div class="row">
+    <% @events.each do |event| %>
+    <div class="col-md-6">
+      <div class="card">
+      <img class="card-img-top" src="<%= event.hero_image_url %>">
+      <div class="card-block">
+      <h4 class="card-title"><%= event.name %></h4>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.
+        </p>
+      <%= link_to "Edit", edit_event_path(id: event.id), class:"btn btn-success" %>
+      <% if event.published_at == nil %>
+      <%= link_to "Publish", publish_event_path(id: event.id), class:'btn btn-primary' %>
+      <% end %>
+    </div>    
+    </div>  
+    </div>
     <% end %>
-  </div>
+  </div>  
 </div>

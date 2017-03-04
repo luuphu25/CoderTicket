@@ -20,7 +20,7 @@ class Event < ActiveRecord::Base
 
   def publish
     if have_enough_ticket_type?
-      self.update(published_at:Time.now)   
+      self.update(published_at:Time.now)     
     end
   end
 

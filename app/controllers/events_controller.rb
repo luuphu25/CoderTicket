@@ -16,6 +16,17 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
   end
 
+  def publish
+    @event = Event.find(params[:id])
+    if @event.publish
+      redirect_to mine_event_path(id: current_user.id)
+    else
+      flash[:error] = "Error #{@event.error.full_messages.to_sentence}"
+      redirect_to mine_event_path(id: current_user.id)
+    end    
+  end
+
+  
   def mine
     @events = Event.where(user_id: current_user.id)
     if params[:search]
@@ -41,19 +52,8 @@ class EventsController < ApplicationController
       render 'new'
     end
   end
+  
 
-  def publish
-    if have_enough_ticket_types?
-      self.update(published_at:datetime)
-    else
-      flash[:error] = "Must have at least 1 type ticket"
-      redirect_to root_path
-    end
-  end
-
-  def have_enough_ticket_type?
-    return not(TicketType.where(event_id: self.id).empty)
-  end
 
   private
   def event_params
