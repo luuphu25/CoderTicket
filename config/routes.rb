@@ -3,9 +3,12 @@ Rails.application.routes.draw do
 
 
 
+
+
   resources :users
   resources :venues, only: [:new, :create]
   resources :sessions, only: [:new, :create]
+  resources :orders, only: [:new, :create]
   get 'upcoming' => 'events#index'
   get 'sign_in' => 'sessions#new'
   delete 'log_out' => 'sessions#destroy'
