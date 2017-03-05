@@ -16,10 +16,10 @@ class TicketsController < ApplicationController
     @ticket.event_id = params[:event_id]
     if @ticket.save
       flash[:success] = "Create ticket success!"
-      render 'new'
+      redirect_to :action => 'new'
     else
       flash[:error] = "Error, #{@tick.error.full_messages.to_sentence}"
-      render 'new'
+      render :action => 'new'
     end
   end
   private
