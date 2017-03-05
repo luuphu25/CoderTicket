@@ -1,5 +1,13 @@
 require 'rails_helper'
-
+require 'simplecov'
 RSpec.describe "events/new.html.erb", type: :view do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'events/new.html.erb' do
+      before do
+        @event = mock_model(Event, name:"test")
+      end
+      it "should show a form" do
+        render
+        controller.response.should be_success
+      end
+  end
 end

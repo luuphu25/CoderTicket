@@ -159,6 +159,10 @@ GEM
       rspec-core (~> 3.5.0)
       rspec-expectations (~> 3.5.0)
       rspec-mocks (~> 3.5.0)
+    rspec-activemodel-mocks (1.0.3)
+      activemodel (>= 3.0)
+      activesupport (>= 3.0)
+      rspec-mocks (>= 2.99, < 4.0)
     rspec-core (3.5.4)
       rspec-support (~> 3.5.0)
     rspec-expectations (3.5.0)
@@ -242,6 +246,7 @@ DEPENDENCIES
   puma (~> 3.7, >= 3.7.1)
   rails (~> 5.0.0, >= 5.0.0.1)
   rails-assets-tether (>= 1.1.0)!
+  rspec-activemodel-mocks
   rspec-rails (~> 3.5, >= 3.5.2)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)

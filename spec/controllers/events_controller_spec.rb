@@ -16,4 +16,7 @@ RSpec.describe EventsController, type: :controller do
     end
   end
 
+
+
+
 end

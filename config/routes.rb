@@ -12,9 +12,7 @@ Rails.application.routes.draw do
   get 'upcoming' => 'events#index'
   get 'sign_in' => 'sessions#new'
   delete 'log_out' => 'sessions#destroy'
-
   root 'events#index'
-
   resources :events do
     member do
       put :publish

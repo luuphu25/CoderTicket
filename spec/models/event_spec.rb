@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'simplecov'
 
 RSpec.describe Event, type: :model do
   describe ".upcoming" do
@@ -51,6 +52,27 @@ RSpec.describe Event, type: :model do
     end
   end
 
+  describe "search" do 
+    it "return result match search" do 
+      d = Event.create!(name: "d", starts_at: 2.days.ago, ends_at: 1.day.from_now, extended_html_description: " a future event",
+      venue: Venue.new, category: Category.new)
+      e = Event.create!(name: "e", starts_at: 2.days.ago, ends_at: 1.day.from_now, extended_html_description: " a future event",
+      venue: Venue.new, category: Category.new)
+      f = Event.create!(name: "f", starts_at: 2.days.ago, ends_at: 1.day.from_now, extended_html_description: " a future event",
+      venue: Venue.new, category: Category.new)
+      expect(Event.search("f")).to eq [f]
+    end
+
+    it "no return result not match search" do 
+      d = Event.create!(name: "d", starts_at: 2.days.ago, ends_at: 1.day.from_now, extended_html_description: " a future event",
+      venue: Venue.new, category: Category.new)
+      e = Event.create!(name: "e", starts_at: 2.days.ago, ends_at: 1.day.from_now, extended_html_description: " a future event",
+      venue: Venue.new, category: Category.new)
+      f = Event.create!(name: "f", starts_at: 2.days.ago, ends_at: 1.day.from_now, extended_html_description: " a future event",
+      venue: Venue.new, category: Category.new)
+      expect(Event.search("f")).not_to include d
+    end
+  end
 
  
 end

@@ -4,8 +4,7 @@ class Event < ActiveRecord::Base
   has_many :ticket_types
 
   validates_presence_of :extended_html_description, :venue, :category, :starts_at
-  validates_uniqueness_of :name, uniqueness: {scope: [:venue, :starts_at]}
-  validate :check_start_date
+  validates_uniqueness_of :name, uniqueness: {scope: [:venue, :starts_at]}  
   validate :end_date_is_after_start_date
   
 
@@ -41,10 +40,6 @@ class Event < ActiveRecord::Base
         end 
       end
 
-      def check_start_date
-        if starts_at < Time.now
-          errors.add(:starts_at, "Start time can't in pass")
-        end
-      end
+      
 
 end
