@@ -21,19 +21,18 @@ class OrdersController < ApplicationController
         @order = Order.new(ticket_type_id: ticket, quantity: q)
         @order.user_id = current_user.id
         if @order.quantity !=0
-           if @order.save
-            flash[:success] = "Order success!"
-            redirect_to orders_path
-            else    
+           if !@order.save          
             flash[:error] = "Error #{@order.error.full_messages.to_sentence}"
-            redirect_to orders_path
-           end
+            return redirect_to root_path
+           end          
         end
       else
         flash[:error] = "Not enough ticket" 
-        redirect_to root_path       
+        return redirect_to orders_path       
       end      
-    end        
+    end
+    flash[:success] = "Order success!"
+    redirect_to orders_path        
   end
 
   def order_params
