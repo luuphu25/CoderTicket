@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController  
-  before_action :authorize
+  before_action :authorize, only: [:create]
   def index
     @ticket_types = TicketType.all
     @orders = Order.where(user_id: current_user.id)
