@@ -18,7 +18,7 @@
         </p>
       <%= link_to "Edit", edit_event_path(id: event.id), class:"btn btn-success" %>
       <% if event.published_at == nil %>
-      <%= link_to "Publish", publish_event_path(id: event.id), class:'btn btn-primary' %>
+      <%= link_to "Publish", publish_event_path(id: event.id),method: :put, class:'btn btn-primary' %>
       <% end %>
     </div>    
     </div>  

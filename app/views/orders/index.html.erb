@@ -1,5 +1,29 @@
-<% @orders.each do |order| %>
-<%= order.ticket_type.name %>
-<%= order.ticket_type.price %>
-<%= order.quantity %>
-<% end %>
+<h1>Your Order</h1>
+<br>
+
+<table class="table">
+  <thead class="bg-success">
+    <tr>
+      <th>Event</th>      
+      <th>Type Ticket</th>
+      <th>Price</th>
+      <th>Quantity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @orders.each do |order| %>
+    <tr>
+      <td><%= (order.ticket_type.event.name).truncate(50) %></td>      
+      <td><%= order.ticket_type.name %></td>
+      <td><%= order.ticket_type.price %></td>
+      <td><%= order.quantity %></td>      
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<div class="bg-primary text-white">
+<h2 class="p2">Total : <%= @x %></h2>
+</div> 
+
+

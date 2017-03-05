@@ -1,8 +1,14 @@
 class OrdersController < ApplicationController  
   before_action :authorize, only: [:create]
+  attr_accessor :sum
   def index
     @ticket_types = TicketType.all
     @orders = Order.where(user_id: current_user.id)
+    @event = Event.all
+    @orders.each do |order|
+      @x = order.ticket_type.price * order.quantity
+    end  
+   
   end
   def new
     order = Order.new
