@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-
+  before_action :check_event_changing_permission, only: [:edit, :update]
   def index
     if current_user
       @events = Event.where.not(published_at: nil).or(Event.where(user_id: current_user.id))
@@ -12,6 +12,11 @@ class EventsController < ApplicationController
         @events = @events.order("created_at DESC") 
      end
   end
+
+  def edit
+    @event = Event.find(params[:id])
+  end
+
 
   def show
     @event = Event.find(params[:id])
@@ -51,6 +56,16 @@ class EventsController < ApplicationController
     else
       flash[:error] = "Error #{@event.errors.full_messages.to_sentence}"
       render 'new'
+    end
+  end
+
+  def update
+    if @event.update(event_params)
+      flash[:success] = "Event update success"
+      redirect_to root_path
+    else 
+      flash[:error] = "Error #{@event.error.full_messages.to_sentence}"
+      redirect_to root_path
     end
   end
   

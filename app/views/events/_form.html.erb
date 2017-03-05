@@ -26,5 +26,5 @@
     <%= f.label :Category %>
     <%= f.select :category_id, Category.all.collect {|e|  [e.name, e.id]}, class:"form-control" %>
   </div>
-  <%= f.submit "Create", class:"btn btn-success" %>
+  <%= f.submit "Submit", class:"btn btn-success" %>
 <% end %>
