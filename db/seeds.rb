@@ -26,6 +26,7 @@ e = Event.create({
   ends_at: DateTime.parse('Sun, 13 Mar 2016 3:00 PM+0700'),
   venue: dalat,
   category: Category.find_by(name: 'Everything Else'),
+  published_at: Time.now,
   hero_image_url: 'https://media.ticketbox.vn/eventcover/2015/10/25/C6A1A5.jpg?w=1040&maxheight=400&mode=crop&anchor=topcenter',
   extended_html_description: <<-DESC
     <p style="text-align:center"><span style="font-size:20px">VIỆT NAM THỬ THÁCH CHIẾN THẮNG 2016</span></p>
@@ -53,7 +54,8 @@ e = Event.create({
   venue: dan_venue,
   category: Category.find_by(name: 'Entertainment'),
   starts_at: DateTime.parse('Sat, 16 Jan 2016, 8:00 PM+0700'),
-  ends_at: DateTime.parse('Sat, 16 Jan 2016, 10:30 PM+0700'),  
+  ends_at: DateTime.parse('Sat, 16 Jan 2016, 10:30 PM+0700'),
+  published_at: Time.now,  
   hero_image_url: 'https://media.ticketbox.vn/eventcover/2015/12/11/C68636.jpg?w=1040&maxheight=400&mode=crop&anchor=topcenter',
   extended_html_description: <<-DESC
   <p style="text-align:justify"> </p>
@@ -137,6 +139,7 @@ e = Event.create({
   ends_at: DateTime.parse('Thu, 24 Dec 2015, 11:00 PM+0700'),
   venue: gap,
   category: Category.find_by(name: 'Entertainment'),
+  published_at: Time.now,
   hero_image_url:'https://media.ticketbox.vn/eventcover/2015/12/12/78534E.jpg?w=1040&maxheight=400&mode=crop&anchor=topcenter',
   extended_html_description: <<-DESC
          <p>

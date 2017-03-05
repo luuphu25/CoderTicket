@@ -8,7 +8,10 @@ class TicketsController < ApplicationController
   def index
     @event = Event.find(params[:event_id])
     @tickets = TicketType.where(event_id: params[:event_id])
-    @orders = []        
+    @orders = []
+    if @event.ends_at < Time.now
+      params[:expired] = true
+    end         
   end
 
   def create
