@@ -6,7 +6,7 @@ class OrdersController < ApplicationController
     @orders = Order.where(user_id: current_user.id)
     @event = Event.all
     @orders.each do |order|
-      @x = order.ticket_type.price * order.quantity
+      @x = @x.to_i + (order.ticket_type.price * order.quantity).to_i
     end  
    
   end
@@ -23,10 +23,10 @@ class OrdersController < ApplicationController
         if @order.quantity !=0
            if @order.save
             flash[:success] = "Order success!"
-            redirect_to root_path
+            redirect_to orders_path
             else    
             flash[:error] = "Error #{@order.error.full_messages.to_sentence}"
-            redirect_to root_path
+            redirect_to orders_path
            end
         end
       else
